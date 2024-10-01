@@ -3,7 +3,7 @@ from typing import Any, Optional
 import aiohttp
 
 class ApiOptions(BaseModel):
-    baseUri: HttpUrl = Field(default="https://api.integrail.ai")
+    baseUri: HttpUrl = Field(default="https://cloud.integrail.ai")
     apiToken: str
 
 class BaseApi:

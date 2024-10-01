@@ -1,10 +1,8 @@
 # Integrail SDK
 
-The Integrail SDK provides a set of tools for working with various data types and external services. It is built using Python and leverages the Pydantic library for data validation and serialization.
-
 ## Usage
 
-Below is an example of how to initialize the `IntegrailCloudApi` and use its `agent.execute` and `agent.execute_multipart` methods with `inputs`, `on_event`, and `on_finish` callbacks.
+Below is an example of how to initialize the `IntegrailCloudApi` and use streaming versions of its `agent.execute` and `agent.execute_multipart` methods.
 
 ### Initializing IntegrailCloudApi
 

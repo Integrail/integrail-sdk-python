@@ -21,19 +21,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install sc if necessary
-        if: ${{ inputs.runner != 'integrail' }}
-        id: install-sc
-        run: |
-          bash <(curl -Ls "https://dist.simple-container.com/sc.sh") --version
+      # - name: Install sc if necessary
+      #   if: ${{ inputs.runner != 'integrail' }}
+      #   id: install-sc
+      #   run: |
+      #     bash <(curl -Ls "https://dist.simple-container.com/sc.sh") --version
       
-      - name: Reveal secrets
-        env:
-          SIMPLE_CONTAINER_CONFIG: ${{ secrets.SC_CONFIG }}
-        run: |
-          bash <(curl -Ls "https://dist.simple-container.com/sc.sh") --version
-          sc secrets reveal --force
-          cat .env >> $GITHUB_ENV
+      # - name: Reveal secrets
+      #   env:
+      #     SIMPLE_CONTAINER_CONFIG: ${{ secrets.SC_CONFIG }}
+      #   run: |
+      #     bash <(curl -Ls "https://dist.simple-container.com/sc.sh") --version
+      #     sc secrets reveal --force
+      #     cat .env >> $GITHUB_ENV
 
       - name: Set up Python 3.12
         uses: actions/setup-python@v5
@@ -58,4 +58,4 @@ jobs:
 
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
-        with: ${{ env.PYPI_API_TOKEN }}
+        # with: ${{ env.PYPI_API_TOKEN }}

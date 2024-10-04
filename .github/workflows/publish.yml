@@ -28,6 +28,8 @@ jobs:
           bash <(curl -Ls "https://dist.simple-container.com/sc.sh") --version
       
       - name: Reveal secrets
+        env:
+          SIMPLE_CONTAINER_CONFIG: ${{ secrets.SC_CONFIG }}
         run: |
           bash <(curl -Ls "https://dist.simple-container.com/sc.sh") --version
           sc secrets reveal --force

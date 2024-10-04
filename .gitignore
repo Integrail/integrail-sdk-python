@@ -138,4 +138,7 @@ cython_debug/
 
 # Local virtual environments
 local_env/
+
+# Simple Container
 .sc/cfg.default.yaml
+.sc/cfg.github.yaml

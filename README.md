@@ -11,7 +11,7 @@ from integrail_sdk import IntegrailCloudApi
 
 # Initialize the API with options
 options = {
-    "api_key": "your_api_key",
+    "apiToken": "your_api_key",
 }
 cloud_api = IntegrailCloudApi(options)
 ```

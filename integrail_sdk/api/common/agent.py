@@ -27,6 +27,7 @@ class BaseAgentApi(BaseApi):
             on_event: Optional[Callable[[ExecutionEvent, Optional[AgentExecution]], Any]] = None,
             on_finish: Optional[Callable[[Optional[AgentExecution]], Coroutine[Any, Any, Any]]] = None,
     ) -> Union[None, 'AgentExecuteNonStreamingResponse']:
+        url = f"/{url}" if not url.startswith("/") else url
         if payload.get("stream") and on_event:
             async def handle_event(data):
                 nonlocal execution
@@ -70,6 +71,7 @@ class BaseAgentApi(BaseApi):
             on_event: Optional[Callable[[ExecutionEvent, Optional[AgentExecution]], Coroutine[Any, Any, Any]]] = None,
             on_finish: Optional[Callable[[Optional[AgentExecution]], Coroutine[Any, Any, Any]]] = None,
     ) -> Union[aiohttp.ClientResponse, 'AgentExecuteNonStreamingResponse']:
+        url = f"/{url}" if not url.startswith("/") else url
         form_data = aiohttp.FormData()
         for key, value in files.items():
             form_data.add_field(key, value)

@@ -1,5 +1,6 @@
 import json
 
+from urllib.parse import urljoin
 from pydantic import BaseModel
 from typing import Any, Dict, Optional, Union, Callable, Coroutine
 import aiohttp
@@ -52,14 +53,14 @@ class BaseAgentApi(BaseApi):
                     await on_finish(execution)
 
             async with aiohttp.ClientSession() as session:
-                async with session.post(f'{self.options.baseUri}{url}', json=payload, headers={
+                async with session.post(urljoin(str(self.options.baseUri), url), json=payload, headers={
                     'Authorization': f'Bearer {self.options.apiToken}',
                 }) as response:
                     execution: Optional[AgentExecution] = None
                     await jsonl(response, handle_event)
         else:
             async with aiohttp.ClientSession() as session:
-                async with session.post(f'{self.options.baseUri}{url}', json=payload) as response:
+                async with session.post(urljoin(str(self.options.baseUri), url), json=payload) as response:
                     return await response.json()
 
     async def wrap_execution_multipart(
@@ -100,14 +101,14 @@ class BaseAgentApi(BaseApi):
                     await on_finish(execution)
 
             async with aiohttp.ClientSession() as session:
-                async with session.post(f'{self.options.baseUri}{url}', data=form_data, headers={
+                async with session.post(urljoin(str(self.options.baseUri), url), data=form_data, headers={
                     'Authorization': f'Bearer {self.options.apiToken}',
                 }) as response:
                     execution: Optional[AgentExecution] = None
                     await jsonl(response, handle_event)
         else:
             async with aiohttp.ClientSession() as session:
-                async with session.post(f'{self.options.baseUri}{url}', data=form_data) as response:
+                async with session.post(urljoin(str(self.options.baseUri), url), data=form_data) as response:
                     return await response.json()
 
 

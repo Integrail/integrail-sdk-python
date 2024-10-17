@@ -25,10 +25,10 @@ from typing import Optional
 from integrail_sdk.types import ExecutionEvent, AgentExecution
 from integrail_sdk.api import CloudAgentExecuteStreamingRequest
 
-def on_event(event: ExecutionEvent, execution: Optional[AgentExecution]):
+async def on_event(event: ExecutionEvent, execution: Optional[AgentExecution]):
     print(f"Event: {event}, Execution: {execution}")
 
-def on_finish(execution: Optional[AgentExecution]):
+async def on_finish(execution: Optional[AgentExecution]):
     print(f"Finished: {execution}")
 
 async def main():
@@ -57,10 +57,10 @@ from typing import Optional
 from integrail_sdk.types import ExecutionEvent, AgentExecution
 from integrail_sdk.api import CloudAgentExecuteStreamingRequest
 
-def on_event(event: ExecutionEvent, execution: Optional[AgentExecution]):
+async def on_event(event: ExecutionEvent, execution: Optional[AgentExecution]):
     print(f"Event: {event}, Execution: {execution}")
 
-def on_finish(execution: Optional[AgentExecution]):
+async def on_finish(execution: Optional[AgentExecution]):
     print(f"Finished: {execution}")
 
 async def main():  
